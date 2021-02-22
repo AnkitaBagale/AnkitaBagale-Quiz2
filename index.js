@@ -1,10 +1,10 @@
- var readlineSync= require('readline-sync');
- var chalk= require('chalk');
+ const readlineSync= require('readline-sync');
+ const chalk= require('chalk');
 
 //Harry potter quiz:
 console.log(chalk.blueBright.bgMagenta("Welcome to the Harry Potter Quiz \n"));
 
-var userName= readlineSync.question(chalk.cyanBright("May i know your name? "), {
+const userName= readlineSync.question(chalk.cyanBright("May i know your name? "), {
   hideEchoBack: true,
   mask: chalk.cyanBright('\u2665')
 });
@@ -12,55 +12,55 @@ var userName= readlineSync.question(chalk.cyanBright("May i know your name? "), 
 console.log(chalk.hex('#DEADED')("\nHi "+userName+". Let's get started. \nEnter a/ b/ c for each question to answer"));
 
 //variable declaration for score and question-answers
-var score=0;
+let score=0;
 
-var question1={
+const question1={
   que: "Which Harry Potter word is now in the Oxford English Dictionary? \na.Hogwartz \nb.Muggle \nc.Voldemort",
   ans: "b"
 };
 
-var question2={
+const question2={
   que: "Who were Harry's parents? \na.Henry and Maggie Potter \nb.William and Elizabeth Potter \nc.James and Lily Potter ",
   ans: "c"
 };
-var question3={
+const question3={
   que: "Which of these Hogwarts professors teaches Transfiguration? \na.Snape \nb.Sprout \nc.McGonagall",
   ans: "c"
 };
-var question4={
+const question4={
   que: "At the end of Harry Potter and the Sorcerer's Stone, which professor removes his turban to reveal Voldemort on the back of his head? \na.Quirrell \nb.Lockhart \nc.snape",
   ans: "a"
 };
-var question5={
+const question5={
   que: "Who first shows Harry the diary of Tom Riddle? \na.Moaning Myrtle \nb.Fawkes \nc.Nearly headless nick",
   ans: "a"
 };
-var question6={
+const question6={
   que: "Who was Tom Marvolo Riddle? \na.The ghost of sirius black \nb.Haryy's Father \nc.Voldemort",
   ans: "c"
 };
-var question7={
+const question7={
   que: "What Hogwarts student is killed in Little Hangleton graveyard at the end of The Goblet of Fire? \na.Draco Malfoy \nb.Naville Longbottom \nc.Cedric Diggory",
   ans: "c"
 };
-var question8={
+const question8={
   que: "Who was NOT a member of the Order of the Phoenix? \na.Mad-eye Moody \nb.Bellatrix Lestarnge \nc.Sirius Black",
   ans: "b"
 };
-var question9={
+const question9={
   que: "Who kills Dumbledore at the end of The Half-Blood Prince? \na.Lucius Malfoy \nb.Draco Malfoy \nc.Snape ",
   ans: "c"
 };
-var question10={
+const question10={
   que: "In the epilogue to Harry Potter and the Deathly Hallows, to whom is Harry married? \na.Hermoine Granger \nb.Ginny Weasely \nc.Cho Chang",
   ans: "b"
 };
 
 //saving all questions in array
-var questionSet=[question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
+const questionSet=[question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
 //defining Leaderboard
-var highScore=[
+let highScore=[
   {nameH:"Ankita", scoreH:"9"},
   {nameH:"Atharva", scoreH:"8"}
 ];
@@ -72,7 +72,7 @@ checkScore(i+1,questionSet[i].que, questionSet[i].ans);
 
 //posting leaderboard
 console.log(chalk.keyword('orange').bold("\n*****Check out Leaderboard*****"));
-var scoreBeaten=false;
+let scoreBeaten=false;
 for(let i=0; i<highScore.length; i++){
   console.log(chalk.keyword('orange').bold(highScore[i].nameH+" : " +highScore[i].scoreH));
 
@@ -87,7 +87,7 @@ console.log(chalk.hex('#DEADED').bold("Yay! This is Your Final Score: "+score));
 
 //if score is beaten, print leaderboard with username and score
 //positionToInsertInsideLeaderboard var
-var posnInsert =0;
+let posnInsert =0;
 if(scoreBeaten){
   console.log(chalk.bold.italic.keyword('pink')("*******Congratulations "+userName+", you have beaten the high Score*******"));
   
@@ -113,7 +113,7 @@ else{
 //function to validate answers and update score
 function checkScore(queNo, checkQue, checkAns){
   
-  var userAns= readlineSync.keyIn(chalk.cyanBright("\n"+queNo+") "+checkQue+ "\n"),{limit: '$<a-c>'});
+  let userAns= readlineSync.keyIn(chalk.cyanBright("\n"+queNo+") "+checkQue+ "\n"),{limit: '$<a-c>'});
   if(userAns===checkAns){
     console.log(chalk.green("Your answer is right"));
     score++;
